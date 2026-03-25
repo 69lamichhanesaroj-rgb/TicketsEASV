@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.ticketworkshop.gui.LoginController"
+            prefWidth="1229"
+            prefHeight="993"
+            style="-fx-background-color: linear-gradient(to bottom right, #faf5ff, #fdf2f8);">
+
+    <!-- ================= TOP (LOGO) ================= -->
+    <top>
+        <HBox alignment="TOP_LEFT">
+            <padding>
+                <Insets top="16" left="16"/>
+            </padding>
+
+            <!-- UPDATED LOGO -->
+            <ImageView fitHeight="100" preserveRatio="true" smooth="true">
+                <image>
+                    <Image url="@images/skolelogoigen.png"/>
+                </image>
+            </ImageView>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER (Login Form) ================= -->
+    <center>
+        <StackPane>
+            <VBox spacing="32" alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </padding>
+
+                <!-- HEADER -->
+                <VBox spacing="12" alignment="CENTER">
+                    <Label text="SEA EVENT TEAM"
+                           style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #0a0a0a;" />
+                    <Label text="Keeps the ocean in motion frfr"
+                           style="-fx-font-size: 20px; -fx-text-fill: #717182;" />
+                </VBox>
+
+                <!-- Spacer to push form toward center -->
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <!-- LOGIN CARD -->
+                <VBox spacing="24" maxWidth="500"
+                      alignment="TOP_LEFT"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 8;
+                             -fx-border-color: #d9d9d9;
+                             -fx-border-radius: 8;">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+
+                    <!-- Username Field -->
+                    <VBox spacing="8">
+                        <Label text="Username" style="-fx-font-size: 16px;" />
+                        <TextField fx:id="usernameField"
+                                   promptText="Please enter your username"
+                                   prefHeight="40"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8;" />
+                    </VBox>
+
+                    <!-- Password Field -->
+                    <VBox spacing="8">
+                        <Label text="Password" style="-fx-font-size: 16px;" />
+                        <PasswordField fx:id="passwordField"
+                                       promptText="************"
+                                       prefHeight="40"
+                                       style="-fx-background-radius: 8; -fx-border-radius: 8;" />
+                    </VBox>
+
+                    <!-- Buttons -->
+                    <HBox spacing="16" alignment="CENTER">
+                        <Button text="Sign In"
+                                maxWidth="Infinity"
+                                HBox.hgrow="ALWAYS"
+                                prefHeight="40"
+                                style="-fx-background-color: #2c2c2c;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 8;"
+                                onAction="#handleSignIn"/>
+                    </HBox>
+
+                    <!-- Forgot Password -->
+                    <HBox alignment="CENTER">
+                        <Hyperlink text="Forgot password?"
+                                   style="-fx-text-fill: #1e1e1e;" />
+                    </HBox>
+                </VBox>
+
+                <!-- Spacer bottom -->
+                <Region VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

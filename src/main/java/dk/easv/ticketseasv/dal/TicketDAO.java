@@ -20,7 +20,7 @@ public class TicketDAO {
                 int eventid = rs.getInt("eventid");
 
 
-                tickets.add(new Ticket (id, name, eventid));
+                tickets.add(new Ticket(id, name, eventid));
             }
         } catch (SQLException e) {
             System.err.println("Error retrieving tickets: " + e.getMessage());
@@ -28,10 +28,5 @@ public class TicketDAO {
         return tickets;
 
 
-
-
-
-
-
-
+    }
 }

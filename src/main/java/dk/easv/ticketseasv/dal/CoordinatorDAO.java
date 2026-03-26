@@ -1,4 +1,6 @@
 package dk.easv.ticketseasv.dal;
 
-public class CoordinatorDAO {
+public class CoordinatorDAO
+{
+
 }

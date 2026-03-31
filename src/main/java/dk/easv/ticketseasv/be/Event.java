@@ -13,6 +13,8 @@ public class Event {
     private LocalTime endTime;
     private String location;
     private String description; //About this event
+    private String when;
+    private String imagePath;
 
 
 
@@ -26,8 +28,24 @@ public class Event {
         this.endTime = endTime;
         this.location = location;
         this.description = description;
+    }
 
+    public Event(int id, String name, String moreInfo, String when, LocalTime starTime,LocalTime endTime,String location,String description, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.moreInfo = moreInfo;
+        this.when = when;
+        this.starTime = starTime;
+        this.endTime = endTime;
+        this.location = location;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
 
+    public Event (String name, String when, String imagePath){
+        this.name = name;
+        this.when = when;
+        this.imagePath = imagePath;
     }
 
     public int getId() {
@@ -92,5 +110,18 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getWhen() {
+        return when;
+    }
+    public void setWhen(String when) {
+        this.when = when;
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

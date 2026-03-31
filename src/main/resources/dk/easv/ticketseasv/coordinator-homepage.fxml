@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dk.easv.ticketseasv.gui.EcHomepageController"
+      spacing="24"
+      stylesheets="@style.css">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Top Bar as always -->
+    <HBox alignment="CENTER_LEFT">
+
+        <ImageView fitHeight="60" preserveRatio="true">
+            <image>
+                <Image url="@images/skolelogoigen.png"/>
+            </image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- psst u can click the user -->
+        <HBox fx:id="userBox"
+              alignment="CENTER"
+              spacing="7"
+              style="-fx-cursor: hand;">
+            <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                <image>
+                    <Image url="@images/userIcon.png"/>
+                </image>
+            </ImageView>
+
+            <Label text="Event coordinator"
+                   style="-fx-font-size: 14px; -fx-font-weight: 500;"/>
+        </HBox>
+
+    </HBox>
+
+    <!-- header-->
+    <VBox spacing="10">
+        <Label text="Welcome back!"
+               style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+
+        <Label text="Manage and explore your events"
+               style="-fx-text-fill: #717182;"/>
+    </VBox>
+
+    <HBox spacing="10">
+
+        <TextField fx:id="searchField"
+                   promptText="Search..."
+                   HBox.hgrow="ALWAYS"/>
+
+        <Button text="Sort by name"
+                onAction="#onSortClicked"/>
+
+        <Button fx:id="newEventBtn"
+                text="Create New Event"
+                onAction="#onNewEventClicked"/>
+    </HBox>
+
+    <ListView fx:id="eventList"
+              VBox.vgrow="ALWAYS"/>
+
+</VBox>

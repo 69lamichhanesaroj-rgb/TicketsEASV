@@ -15,7 +15,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"fx:controller="dk.easv.ticketseasv.gui.TicketController">
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.ticketseasv.gui.TicketController">
 
     <content>
         <VBox spacing="32">

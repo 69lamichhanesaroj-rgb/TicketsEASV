@@ -13,6 +13,15 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Login TicketsEASV");
+
+        stage.setWidth(1000);
+        stage.setHeight(500);
+
+        //minimum size so user cant make the window too small
+        stage.setMinWidth(900);
+        stage.setMinHeight(600);
+
+
         stage.setScene(scene);
         stage.show();
     }

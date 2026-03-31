@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dk.easv.ticketseasv.gui.AdminHomepageController"
+      spacing="24">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Top Bar as always -->
+    <HBox alignment="CENTER_LEFT">
+        <ImageView fitHeight="60" preserveRatio="true">
+            <image>
+                <Image url="@images/skolelogoigen.png"/>
+            </image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <HBox fx:id="userBox" alignment="CENTER" spacing="7">
+            <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                <image>
+                    <Image url="@images/userIcon.png"/>
+                </image>
+            </ImageView>
+            <Label text="Admin" style="-fx-font-size:15px; -fx-font-weight:500;"/>
+        </HBox>
+    </HBox>
+
+    <!-- Welcoming u frfr -->
+    <VBox spacing="10">
+        <Label text="Welcome back!" style="-fx-font-size:28px; -fx-font-weight:bold;"/>
+        <Label text="Wanna see your events or users?" style="-fx-text-fill:#717182;"/>
+    </VBox>
+
+    <!-- Buttons to switch between viewing events or users -->
+    <HBox spacing="10">
+        <Button fx:id="eventsBtn" text="Events"/>
+        <Button fx:id="usersBtn" text="Users"/>
+    </HBox>
+
+    <!-- Dashboard 'versions' -->
+    <StackPane VBox.vgrow="ALWAYS">
+
+        <!-- Events -->
+        <VBox fx:id="eventsPane" spacing="16" VBox.vgrow="ALWAYS">
+            <HBox spacing="10">
+                <TextField fx:id="searchField" promptText="Search events..." HBox.hgrow="ALWAYS"/>
+                <Button text="Sort by name" onAction="#onSortClicked"/>
+            </HBox>
+            <ListView fx:id="eventList" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <!-- Users -->
+        <VBox fx:id="usersPane" spacing="16" VBox.vgrow="ALWAYS" visible="false" managed="false">
+            <HBox spacing="10">
+                <TextField fx:id="userSearchField" promptText="Search users..." HBox.hgrow="ALWAYS"/>
+                <Button text="Sort by name" onAction="#onSortClicked"/>
+                <Button text="New User" fx:id="newUserBtn" onAction="#onNewUserClicked"/>
+            </HBox>
+            <ListView fx:id="userList" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </StackPane>
+</VBox>

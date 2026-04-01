@@ -14,8 +14,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Login TicketsEASV");
 
-        stage.setWidth(1000);
-        stage.setHeight(500);
+        stage.setWidth(1020);
+        stage.setHeight(750);
 
         //minimum size so user cant make the window too small
         stage.setMinWidth(900);

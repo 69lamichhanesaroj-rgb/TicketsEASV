@@ -30,7 +30,7 @@ public class PasswordHasher {
                 KEY_LENGTH
         );
 
-        // choosing algorithum
+        // choosing algorithm
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         byte[] hash = factory.generateSecret(spec).getEncoded(); // generate hash
 

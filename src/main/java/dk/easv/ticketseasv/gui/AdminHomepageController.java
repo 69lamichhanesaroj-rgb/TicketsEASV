@@ -81,7 +81,7 @@ public class AdminHomepageController {
                 if (empty || user == null) {
                     setText(null);
                 } else {
-                    setText(user.getName() + " (" + user.getRole() + ")");
+                    setText(user.getUsername() + " (" + user.getRole() + ")");
                 }
             }
         });
@@ -138,7 +138,7 @@ public class AdminHomepageController {
 
     private void filterUserList(String filter) {
         String lower = filter.toLowerCase();
-        filteredUsers.setPredicate(u -> u.getName().toLowerCase().contains(lower));
+        filteredUsers.setPredicate(u -> u.getUsername().toLowerCase().contains(lower));
     }
 
 
@@ -147,7 +147,7 @@ public class AdminHomepageController {
         if (eventsPane.isVisible()) {
             FXCollections.sort(masterData, (a,b) -> a.getName().compareToIgnoreCase(b.getName()));
         } else {
-            FXCollections.sort(userMasterData, (a,b) -> a.getName().compareToIgnoreCase(b.getName()));
+            FXCollections.sort(userMasterData, (a,b) -> a.getUsername().compareToIgnoreCase(b.getUsername()));
         }
     }
 
@@ -164,7 +164,7 @@ public class AdminHomepageController {
 
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("dk.easv.ticketseasv.login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../login-view.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) userBox.getScene().getWindow();
             stage.setScene(new Scene(root));

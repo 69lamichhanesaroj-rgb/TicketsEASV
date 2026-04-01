@@ -115,7 +115,7 @@ public class EcHomepageController {
     private void handleLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("dk.easv.ticketseasv.login-view.fxml")
+                    getClass().getResource("../login-view.fxml")
             );
             Parent root = loader.load();
             Stage stage = (Stage) userBox.getScene().getWindow();

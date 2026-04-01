@@ -1,0 +1,31 @@
+package dk.easv.ticketseasv.dal;
+
+import dk.easv.ticketseasv.be.User;
+
+import java.sql.*;
+
+public class UsersDAO {
+    ConnectionManager conMan = new ConnectionManager();
+
+    public User getUser(String login) {
+        try (Connection con = conMan.getConnection()) {
+            String sql = "SELECT * FROM Users WHERE Login = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, login);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("Id");
+                String role = rs.getString("Role");
+                String username = rs.getString("Username");
+                //No point asking for login since we already have it
+                String password = rs.getString("Password");
+                String salt = rs.getString("Salt");
+                return new User(id, role, username, login, password, salt);
+            } else {
+                return null; // No user found with the given login
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

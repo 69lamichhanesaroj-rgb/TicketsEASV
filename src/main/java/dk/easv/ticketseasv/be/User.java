@@ -2,23 +2,24 @@ package dk.easv.ticketseasv.be;
 
 public class User {
     private int id;
-    private String name;
-    private int roleId;
+    private String role;
+    private String Username;
     private String email;
     private String password;
-    private String role;
+    private String salt;
 
-    public User(int id, String name, int roleId, String email, String password) {
+
+    public User(int id, String role, String Username, String email, String password, String salt) {
         this.id = id;
-        this.name = name;
-        this.roleId = roleId;
+        this.role = role;
+        this.Username = Username;
         this.email = email;
         this.password = password;
-
+        this.salt = salt;
     }
 
     public User(String name, String role) {
-        this.name = name;
+        this.Username = name;
         this.role = role;
     }
 
@@ -30,20 +31,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void  setRole(String role) {
+        this.role = role;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setUsername(String username) {
+        this.Username = username;
     }
 
     public String getEmail() {
@@ -62,6 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public void  setRole(String role) {this.role = role;}
-    public String getRole() {return role;}
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 }

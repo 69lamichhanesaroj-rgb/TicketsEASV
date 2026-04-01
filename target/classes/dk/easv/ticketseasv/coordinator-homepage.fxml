@@ -59,7 +59,7 @@
                    promptText="Search..."
                    HBox.hgrow="ALWAYS"/>
 
-        <Button text="Sort by name"
+        <Button text="Sort by username"
                 onAction="#onSortClicked"/>
 
         <Button fx:id="newEventBtn"

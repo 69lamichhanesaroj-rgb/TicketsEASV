@@ -3,7 +3,7 @@ package dk.easv.ticketseasv.bll;
 import dk.easv.ticketseasv.be.User;
 import dk.easv.ticketseasv.dal.DAOManager;
 
-public class LoginManager
+public class PasswordManager
 {
     DAOManager dao = new DAOManager();
     User user;

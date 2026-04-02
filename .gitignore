@@ -35,3 +35,4 @@ replay_pid*
 pom.xml
 config/config.settings
 .idea/inspectionProfiles/Project_Default.xml
+src/main/java/dk/easv/ticketseasv/dal/ConnectionManagerLocal.java

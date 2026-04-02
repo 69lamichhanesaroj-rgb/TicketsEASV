@@ -1,13 +1,11 @@
 package dk.easv.ticketseasv.gui;
 
 import dk.easv.ticketseasv.be.User;
-import dk.easv.ticketseasv.bll.LoginManager;
+import dk.easv.ticketseasv.bll.PasswordManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -23,15 +21,15 @@ public class LoginController {
     @FXML
     public Label lblErr;
 
-    LoginManager loginManager = new LoginManager();
+    PasswordManager passwordManager = new PasswordManager();
 
     public void btnSignIn(ActionEvent actionEvent) throws Exception {
         String login = txtUsernameField.getText();
         String password = txtPasswordField.getText();
 
 
-        if (loginManager.checkLogin(login, password)) {
-            User user = loginManager.getUser();
+        if (passwordManager.checkLogin(login, password)) {
+            User user = passwordManager.getUser();
             if (user.getRole().equals("Admin")) {
                 Stage stage = (Stage) txtUsernameField.getScene().getWindow();
                 stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-homepage.fxml"))));

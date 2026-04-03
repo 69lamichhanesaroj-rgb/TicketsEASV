@@ -174,7 +174,7 @@ public class AdminHomepageController {
     @FXML
     private void onNewUserClicked() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/ticketseasv/add-user.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../add-user.fxml"));
             VBox root = loader.load();
 
             AddUserController controller = loader.getController();
@@ -184,6 +184,8 @@ public class AdminHomepageController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(userBox.getScene().getWindow());
             stage.setScene(new Scene(root));
+            stage.setMinWidth(400);
+            stage.setMinHeight(270);
 
             controller.setDialogStage(stage);
 

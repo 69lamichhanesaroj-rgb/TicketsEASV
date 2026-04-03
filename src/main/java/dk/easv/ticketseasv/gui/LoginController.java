@@ -23,19 +23,22 @@ public class LoginController {
 
     PasswordManager passwordManager = new PasswordManager();
 
-    public void btnSignIn(ActionEvent actionEvent) throws Exception {
+    public void btnSignIn(ActionEvent actionEvent) {
         String login = txtUsernameField.getText();
         String password = txtPasswordField.getText();
 
-
         if (passwordManager.checkLogin(login, password)) {
             User user = passwordManager.getUser();
-            if (user.getRole().equals("Admin")) {
-                Stage stage = (Stage) txtUsernameField.getScene().getWindow();
-                stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-homepage.fxml"))));
-            } else {
-                Stage stage = (Stage) txtUsernameField.getScene().getWindow();
-                stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../coordinator-homepage.fxml"))));
+            try {
+                if (user.getRole().equals("Admin")) {
+                    Stage stage = (Stage) txtUsernameField.getScene().getWindow();
+                    stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-homepage.fxml"))));
+                } else {
+                    Stage stage = (Stage) txtUsernameField.getScene().getWindow();
+                    stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../coordinator-homepage.fxml"))));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         } else {
             lblErr.setVisible(true);

@@ -30,10 +30,8 @@ public class UsersDAO {
     }
 
     public void addUser(User user) {
-        try (
-                Connection con = conMan.getConnection();
-        ) {
-            String sql = "INSERT INTO Users (Role, Username, email, Password, Salt) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = conMan.getConnection()) {
+            String sql = "INSERT INTO Users (Role, Username, Login, Password, Salt) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, user.getRole());
             stmt.setString(2, user.getUsername());

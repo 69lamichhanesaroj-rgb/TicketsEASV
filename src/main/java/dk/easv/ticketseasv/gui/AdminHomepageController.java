@@ -190,11 +190,16 @@ public class AdminHomepageController {
             controller.setDialogStage(stage);
 
             stage.showAndWait();
+            /*
 
             User addedUser = controller.getNewUser();
             if (addedUser != null) {
                 userMasterData.add(addedUser); // Updates Listview automatically
             }
+
+            This should be requesting the database to refresh the user list, since the new user doesn't have assigned id
+            Same goes for the events, but I don't want to find this function right now
+            */
 
         } catch (IOException e) {
             e.printStackTrace();

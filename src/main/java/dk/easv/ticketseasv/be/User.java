@@ -18,6 +18,14 @@ public class User {
         this.salt = salt;
     }
 
+    public User(String role, String Username, String email, String password, String salt) {
+        this.role = role;
+        this.Username = Username;
+        this.email = email;
+        this.password = password;
+        this.salt = salt;
+    }
+
     public User(String name, String role) {
         this.Username = name;
         this.role = role;

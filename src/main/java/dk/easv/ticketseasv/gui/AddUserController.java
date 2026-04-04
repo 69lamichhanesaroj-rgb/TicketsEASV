@@ -1,13 +1,11 @@
 package dk.easv.ticketseasv.gui;
 
-import dk.easv.ticketseasv.bll.PasswordHasher;
-import dk.easv.ticketseasv.dal.DAOManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import dk.easv.ticketseasv.be.User;
+import dk.easv.ticketseasv.bll.PasswordManager;
 
 public class AddUserController {
 
@@ -21,11 +19,10 @@ public class AddUserController {
     private TextField txtPassword;
 
     private Stage dialogStage;
-    private User newUser;
-    DAOManager daoManager;
+
+    private final PasswordManager passwordManager = new PasswordManager();
 
     public void initialize() {
-        daoManager = new DAOManager();
         cbRole.getItems().addAll("Admin", "Event Coordinator");
     }
 
@@ -33,32 +30,29 @@ public class AddUserController {
         this.dialogStage = stage;
     }
 
-    public User getNewUser() {
-        return newUser;
-    }
+    public void btnAddUser() {
+        try {
+            String username = txtUsername.getText().trim();
+            String role = cbRole.getSelectionModel().getSelectedItem();
+            String email = txtEmail.getText().trim();
+            String password = txtPassword.getText().trim();
 
-    public void btnAddUser() throws Exception {
-        String username = txtUsername.getText().trim();
-        String role = cbRole.getSelectionModel().getSelectedItem();
-        String email = txtEmail.getText().trim();
-        String password = txtPassword.getText().trim();
-
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || role.isEmpty()) {
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || role.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid Input");
+                alert.setHeaderText(null);
+                alert.setContentText("Please make sure you've filled out all of the fields");
+                alert.showAndWait();
+                return;
+            }
+            passwordManager.AddUser(username, role, email, password);
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Input");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please make sure you've filled out all of the fields");
+            alert.setContentText("An error occurred while adding the user: " + e.getMessage());
             alert.showAndWait();
-            return;
         }
-
-        String salt = PasswordHasher.generateSalt();
-        String hash = PasswordHasher.hashPassword(password, salt);
-        newUser = new User(username, role);
-        newUser.setEmail(email);
-        newUser.setPassword(hash);
-        newUser.setSalt(salt);
-        daoManager.getUsersDAO().addUser(newUser);
         dialogStage.close();
     }
 

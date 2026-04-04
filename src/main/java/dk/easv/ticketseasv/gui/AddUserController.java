@@ -1,5 +1,7 @@
 package dk.easv.ticketseasv.gui;
 
+import dk.easv.ticketseasv.bll.PasswordHasher;
+import dk.easv.ticketseasv.dal.DAOManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -20,8 +22,10 @@ public class AddUserController {
 
     private Stage dialogStage;
     private User newUser;
+    DAOManager daoManager;
 
     public void initialize() {
+        daoManager = new DAOManager();
         cbRole.getItems().addAll("Admin", "Event Coordinator");
     }
 
@@ -33,7 +37,7 @@ public class AddUserController {
         return newUser;
     }
 
-    public void btnAddUser() {
+    public void btnAddUser() throws Exception {
         String username = txtUsername.getText().trim();
         String role = cbRole.getSelectionModel().getSelectedItem();
         String email = txtEmail.getText().trim();
@@ -48,6 +52,13 @@ public class AddUserController {
             return;
         }
 
+        String salt = PasswordHasher.generateSalt();
+        String hash = PasswordHasher.hashPassword(password, salt);
+        newUser = new User(username, role);
+        newUser.setEmail(email);
+        newUser.setPassword(hash);
+        newUser.setSalt(salt);
+        daoManager.getUsersDAO().addUser(newUser);
         dialogStage.close();
     }
 

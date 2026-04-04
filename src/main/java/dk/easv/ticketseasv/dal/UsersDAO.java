@@ -28,4 +28,21 @@ public class UsersDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void addUser(User user) {
+        try (
+                Connection con = conMan.getConnection();
+        ) {
+            String sql = "INSERT INTO Users (Role, Username, email, Password, Salt) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, user.getRole());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, user.getPassword());
+            stmt.setString(5, user.getSalt());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

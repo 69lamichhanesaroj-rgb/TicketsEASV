@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"fx:controller="dk.easv.ticketseasv.gui.TicketController">
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <content>
         <VBox spacing="32">
@@ -48,9 +48,9 @@
 
             <!-- ================= HEADER ================= -->
             <VBox alignment="CENTER" spacing="12">
-                <Label style="-fx-font-size: 40px; -fx-font-weight: 500;" text="The Voice" />
+                <Label style="-fx-font-size: 40px; -fx-font-weight: 500;" text="(Event Name)" />
 
-                <Label style="-fx-font-size: 20px; -fx-text-fill: #717182;" text="Karaoke night at SEA’s friday bar!" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: #717182;" text="(Small event description) &lt;-- Not sure about that" />
             </VBox>
 
             <!-- ================= MAIN CONTENT ================= -->
@@ -63,13 +63,12 @@
                     <VBox spacing="24" style="-fx-background-color: white;                                  -fx-background-radius: 14;                                  -fx-padding: 24;                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0.2, 0, 8);">
 
                         <!-- Image -->
-                        <StackPane>
-                            <ImageView fitHeight="260" fitWidth="559" preserveRatio="true">
+                        <StackPane prefHeight="225.0" prefWidth="512.0">
+                            <ImageView fitHeight="250.0" fitWidth="462.0" preserveRatio="true">
                                 <image>
-                                    <Image url="@images/TheVoiceTitleCard.png" />
+                                    <Image url="@images/Image_Preview.png" />
                                 </image>
                             </ImageView>
-                            <Label style="-fx-background-color: #9810fa;                                           -fx-text-fill: white;                                           -fx-padding: 4 8 4 8;                                           -fx-background-radius: 4;" text="Friday bar" StackPane.alignment="BOTTOM_LEFT" />
                         </StackPane>
 
                         <!-- Event Details -->
@@ -77,14 +76,14 @@
                             <Label style="-fx-font-size: 20px; -fx-font-weight: 500;" text="Event Details" />
 
                             <VBox spacing="12">
-                                <Label style="-fx-font-size: 16px;" text="Friday, February 30, 2026" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Make sure to reserve the date in your calendar ;D" />
+                                <Label style="-fx-font-size: 16px;" text="(Date)" />
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Make sure to reserve the date in your calendar ;D &lt;-- Not sure about that" />
 
-                                <Label style="-fx-font-size: 16px;" text="7:30 PM - 1:00 AM" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Karaoke starts @ 8 PM" />
+                                <Label style="-fx-font-size: 16px;" text="(Time/Duration)" />
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Start time)" />
 
-                                <Label style="-fx-font-size: 16px;" text="SEA’s basement bar" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="I’m sure you already know where it is" />
+                                <Label style="-fx-font-size: 16px;" text="(Location)" />
+                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Extra location Details)" />
                             </VBox>
                         </VBox>
 
@@ -93,7 +92,7 @@
                             <Separator />
                             <Label style="-fx-font-size: 16px; -fx-font-weight: 500;" text="About This Event" />
 
-                            <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Channel your inner Whitney Houston for this year’s karaoke night! If you just Wanna Dance With Somebody, we have a dance floor for that :D" wrapText="true" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Description)" wrapText="true" />
                         </VBox>
                     </VBox>
 
@@ -103,7 +102,7 @@
                         <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Ticket Price" />
 
                         <HBox alignment="BASELINE_LEFT" spacing="4">
-                            <Label style="-fx-font-size: 48px; -fx-font-weight: bold;" text="125" />
+                            <Label style="-fx-font-size: 48px; -fx-font-weight: bold;" text="(Ticket Price)" />
                             <Label style="-fx-font-size: 14px;" text="dkk" />
                         </HBox>
                     </VBox>
@@ -140,11 +139,13 @@
                         <!-- Number of Tickets -->
                         <VBox spacing="8">
                             <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Number of Tickets" />
-                            <HBox alignment="CENTER_LEFT" spacing="16">
+                            <HBox alignment="CENTER_LEFT" spacing="12.0">
                                 <Button prefHeight="44" prefWidth="44" text="-" />
                                 <Label style="-fx-font-size: 16px; -fx-font-weight: 500;" text="1" />
                                 <Button prefHeight="44" prefWidth="44" text="+" />
-                               <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="× 125 dkk each" />
+                                <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="x" />
+                        <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="(Ticket Price)" />
+                        <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="dkk each" />
                             </HBox>
                         </VBox>
 
@@ -160,9 +161,9 @@
                             <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 16;                  -fx-border-color: rgba(0,0,0,0.1);                  -fx-border-radius: 10;                  -fx-background-radius: 10;">
 
                                 <RadioButton selected="true">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="deliveryGroup" />
-                           </toggleGroup></RadioButton>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="deliveryGroup" />
+                                    </toggleGroup></RadioButton>
 
                                 <VBox spacing="4">
                                     <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Email Delivery" />
@@ -197,7 +198,7 @@
                                 <Label style="-fx-font-size: 16px;" text="Tickets (1)" HBox.hgrow="ALWAYS" />
 
                                 <HBox alignment="BASELINE_RIGHT" spacing="4">
-                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="125" />
+                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="(Ticket Price)" />
                                     <Label style="-fx-font-size: 14px;" text="dkk" />
                                 </HBox>
                             </HBox>
@@ -209,7 +210,7 @@
                                 <Label style="-fx-font-size: 18px;" text="Total" HBox.hgrow="ALWAYS" />
 
                                 <HBox alignment="BASELINE_RIGHT" spacing="4">
-                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="125" />
+                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="(Total Price)" />
                                     <Label style="-fx-font-size: 14px;" text="dkk" />
                                 </HBox>
                             </HBox>

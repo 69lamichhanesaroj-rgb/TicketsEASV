@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.util.Objects;
 
 public class LoginController {
@@ -43,11 +42,10 @@ public class LoginController {
         if (passwordManager.checkLogin(login, password)) {
             User user = passwordManager.getUser();
             try {
+                Stage stage = (Stage) txtUsernameField.getScene().getWindow();
                 if (user.getRole().equals("Admin")) {
-                    Stage stage = (Stage) txtUsernameField.getScene().getWindow();
                     stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../admin-homepage.fxml"))));
                 } else {
-                    Stage stage = (Stage) txtUsernameField.getScene().getWindow();
                     stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../coordinator-homepage.fxml"))));
                 }
             } catch (Exception e) {

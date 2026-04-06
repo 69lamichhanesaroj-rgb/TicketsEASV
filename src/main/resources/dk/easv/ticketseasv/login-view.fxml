@@ -66,7 +66,7 @@
 
                     <!-- Username Field -->
                     <VBox spacing="8">
-                        <Label style="-fx-font-size: 16px;" text="Username" />
+                        <Label style="-fx-font-size: 16px;" text="Email" />
                         <TextField fx:id="txtUsernameField" prefHeight="40" promptText="Please enter your username" style="-fx-background-radius: 8; -fx-border-radius: 8;" />
                     </VBox>
 
@@ -78,7 +78,7 @@
 
                     <!-- Buttons -->
                     <HBox alignment="CENTER" spacing="16">
-                        <Button maxWidth="Infinity" onAction="#btnSignIn" prefHeight="40" style="-fx-background-color: #2c2c2c;                                        -fx-text-fill: white;                                        -fx-background-radius: 8;" text="Sign In" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnLogIn" disable="true" maxWidth="Infinity" onAction="#btnSignIn" prefHeight="40" style="-fx-background-color: #2c2c2c;                                        -fx-text-fill: white;                                        -fx-background-radius: 8;" text="Sign In" HBox.hgrow="ALWAYS" />
                     </HBox>
 
                     <!-- Forgot Password -->

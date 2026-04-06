@@ -6,6 +6,7 @@ import dk.easv.ticketseasv.bll.PasswordManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,8 +21,20 @@ public class LoginController {
     public TextField txtUsernameField;
     @FXML
     public Label lblErr;
+    @FXML
+    public Button btnLogIn;
 
     PasswordManager passwordManager = new PasswordManager();
+
+    @FXML
+    public void initialize() {
+         txtUsernameField.textProperty().addListener((_, _, _) -> updateButton());
+         txtPasswordField.textProperty().addListener((_, _, _) -> updateButton());
+    }
+
+    private void updateButton() {
+        btnLogIn.setDisable(txtUsernameField.getText().isEmpty() || txtPasswordField.getText().isEmpty());
+    }
 
     public void btnSignIn(ActionEvent actionEvent) {
         String login = txtUsernameField.getText();
@@ -38,7 +51,8 @@ public class LoginController {
                     stage.getScene().setRoot(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../coordinator-homepage.fxml"))));
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                lblErr.setVisible(true);
+                lblErr.setText("An error occurred while loading the homepage");
             }
         } else {
             lblErr.setVisible(true);

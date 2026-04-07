@@ -39,7 +39,7 @@
             </ImageView>
 
             <Label text="Event coordinator"
-                   style="-fx-font-size: 14px; -fx-font-weight: 500;"/>
+                   style="-fx-font-size: 15px; -fx-font-weight: 500;"/>
         </HBox>
 
     </HBox>

@@ -10,13 +10,13 @@ import dk.easv.ticketseasv.bll.PasswordManager;
 public class AddUserController {
 
     @FXML
-    private TextField txtUsername;
+    private TextField usernameTxt;
     @FXML
     private ComboBox<String> cbRole;
     @FXML
-    private TextField txtEmail;
+    private TextField emailTxt;
     @FXML
-    private TextField txtPassword;
+    private TextField passwordTxt;
 
     private Stage dialogStage;
 
@@ -32,10 +32,10 @@ public class AddUserController {
 
     public void btnAddUser() {
         try {
-            String username = txtUsername.getText().trim();
+            String username = usernameTxt.getText().trim();
             String role = cbRole.getSelectionModel().getSelectedItem();
-            String email = txtEmail.getText().trim();
-            String password = txtPassword.getText().trim();
+            String email = emailTxt.getText().trim();
+            String password = passwordTxt.getText().trim();
 
             if (username.isEmpty() || email.isEmpty() || password.isEmpty() || role.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

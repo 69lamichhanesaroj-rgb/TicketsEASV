@@ -2,6 +2,7 @@ package dk.easv.ticketseasv.gui;
 
 import dk.easv.ticketseasv.be.Event;
 import dk.easv.ticketseasv.be.User;
+import dk.easv.ticketseasv.dal.UsersDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class AdminHomepageController {
@@ -61,19 +63,32 @@ public class AdminHomepageController {
         }
         filteredData = new FilteredList<>(masterData, e -> true);
         eventList.setItems(filteredData);
-        eventList.setCellFactory(list -> new EventCell());
+        eventList.setCellFactory(list -> new EventCell("Admin"));
         
-        if (userMasterData.isEmpty()) {
+        /* if (userMasterData.isEmpty()) {
             userMasterData.addAll(
-                    new User("Bob", "Coordinator"),
-                    new User("Bobby", "Coordinator"),
+                    new User("Bob", "Event Coordinator"),
+                    new User("Bobby", "Event Coordinator"),
                     new User("Bobson", "Admin")
             );
         }
+
+         */
+
+
+        if (userMasterData.isEmpty()) {
+            UsersDAO usersDAO = new UsersDAO();
+            try {
+                userMasterData.addAll(usersDAO.getAllUsers());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         filteredUsers = new FilteredList<>(userMasterData, u -> true);
         userList.setItems(filteredUsers);
 
-        // Show name & role in the ListView
+
         userList.setCellFactory(list -> new ListCell<User>() {
             @Override
             protected void updateItem(User user, boolean empty) {
@@ -97,16 +112,16 @@ public class AdminHomepageController {
             else userMenu.show(userBox, javafx.geometry.Side.BOTTOM, 0, 0);
         });
 
-        // buttons to switch with
+
         eventsBtn.setOnAction(e -> switchToEvents());
         usersBtn.setOnAction(e -> switchToUsers());
-        switchToEvents(); // default tab
+        switchToEvents();
 
         // live search for both events and users
         searchField.textProperty().addListener((obs, oldVal, newVal) -> filterEventList(newVal));
         userSearchField.textProperty().addListener((obs, oldVal, newVal) -> filterUserList(newVal));
 
-        // double click to open an event
+
         eventList.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 Event selected = eventList.getSelectionModel().getSelectedItem();
@@ -115,7 +130,7 @@ public class AdminHomepageController {
         });
     }
 
-    // Switch between seeing events or seeing users
+
     private void switchToEvents() {
         eventsPane.setVisible(true);
         eventsPane.setManaged(true);

@@ -27,7 +27,7 @@
             <!-- UPDATED LOGO -->
             <ImageView fitHeight="100" preserveRatio="true" smooth="true">
                 <image>
-                    <Image url="@Images/skolelogoigen.png" />
+                    <Image url="@images/skolelogoigen.png" />
                 </image>
             </ImageView>
         </HBox>

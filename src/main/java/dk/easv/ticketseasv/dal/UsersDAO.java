@@ -3,6 +3,8 @@ package dk.easv.ticketseasv.dal;
 import dk.easv.ticketseasv.be.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersDAO {
     ConnectionManager conMan = new ConnectionManager();
@@ -42,5 +44,31 @@ public class UsersDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+
+        try (Connection con = conMan.getConnection()) {
+            String sql = "SELECT * FROM Users";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                String role = rs.getString("Role");
+                String username = rs.getString("Username");
+                String login = rs.getString("Login");
+                String password = rs.getString("Password");
+                String salt = rs.getString("Salt");
+
+                users.add(new User(id, role, username, login, password, salt));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return users;
     }
 }

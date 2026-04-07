@@ -8,16 +8,16 @@ public class EventDAO
 {
     ConnectionManager conMan = new ConnectionManager();
 
-    public int addEvent(String name, String description, String start, String end, String Date, String location)
+    public int addEvent(String name, String description, String start_time, String end_time, String date, String location)
     {
         try(Connection con = conMan.getConnection())
         {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO Events (name, description, start, end, date, location) VALUES (?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Events (name, description, start_time, end_time, date, location) VALUES (?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, name);
             stmt.setString(2, description);
-            stmt.setString(3, start);
-            stmt.setString(4, end);
-            stmt.setString(5, Date);
+            stmt.setString(3, start_time);
+            stmt.setString(4, end_time);
+            stmt.setString(5, date);
             stmt.setString(6, location);
             stmt.executeUpdate();
         }
@@ -33,7 +33,7 @@ public class EventDAO
     {
         try(Connection con = conMan.getConnection())
         {
-            PreparedStatement stmt = con.prepareStatement("UPDATE Events SET name=?, description=?, start=?, end=?, date=?, location=? WHERE id=?");
+            PreparedStatement stmt = con.prepareStatement("UPDATE Events SET name=?, description=?, start_time=?, end_time=?, date=?, location=? WHERE id=?");
 
             stmt.setString(1, event.getName());
             stmt.setString(2, event.getDescription());

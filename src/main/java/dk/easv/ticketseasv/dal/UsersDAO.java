@@ -11,17 +11,17 @@ public class UsersDAO {
 
     public User getUser(String login) {
         try (Connection con = conMan.getConnection()) {
-            String sql = "SELECT * FROM Users WHERE Login = ?";
+            String sql = "SELECT * FROM Users WHERE login = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, login);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                int id = rs.getInt("Id");
-                String role = rs.getString("Role");
-                String username = rs.getString("Username");
+                int id = rs.getInt("id");
+                String role = rs.getString("role");
+                String username = rs.getString("username");
                 //No point asking for login since we already have it
-                String password = rs.getString("Password");
-                String salt = rs.getString("Salt");
+                String password = rs.getString("password");
+                String salt = rs.getString("salt");
                 return new User(id, role, username, login, password, salt);
             } else {
                 return null; // No user found with the given login
@@ -33,7 +33,7 @@ public class UsersDAO {
 
     public void addUser(User user) {
         try (Connection con = conMan.getConnection()) {
-            String sql = "INSERT INTO Users (Role, Username, Login, Password, Salt) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Users (role, username, login, password, salt) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, user.getRole());
             stmt.setString(2, user.getUsername());
@@ -55,12 +55,12 @@ public class UsersDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("Id");
-                String role = rs.getString("Role");
-                String username = rs.getString("Username");
-                String login = rs.getString("Login");
-                String password = rs.getString("Password");
-                String salt = rs.getString("Salt");
+                int id = rs.getInt("id");
+                String role = rs.getString("role");
+                String username = rs.getString("username");
+                String login = rs.getString("login");
+                String password = rs.getString("password");
+                String salt = rs.getString("salt");
 
                 users.add(new User(id, role, username, login, password, salt));
             }

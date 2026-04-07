@@ -16,10 +16,10 @@ public class PasswordManager
         }
     }
 
-    public void AddUser(String username, String role, String login, String password) throws Exception {
+    public void AddUser(String role, String username, String login, String password) throws Exception {
         String salt = PasswordHasher.generateSalt();
         String hash = PasswordHasher.hashPassword(password, salt);
-        User newUser = new User(username, role, login, hash, salt);
+        User newUser = new User(role, username, login, hash, salt);
         dao.getUsersDAO().addUser(newUser);
     }
 

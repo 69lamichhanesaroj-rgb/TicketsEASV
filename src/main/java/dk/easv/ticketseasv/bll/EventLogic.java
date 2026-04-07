@@ -3,8 +3,8 @@ package dk.easv.ticketseasv.bll;
 import dk.easv.ticketseasv.be.*;
 import dk.easv.ticketseasv.dal.DAOManager;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Date;
+import java.sql.Time;
 
 public class EventLogic {
 
@@ -13,7 +13,7 @@ public class EventLogic {
     public EventLogic()
     {}
 
-    public int createEvent(String name, String description, LocalTime start, LocalTime end, LocalDate Date, String location)
+    public int createEvent(String name, String description, String start, String end, String Date, String location)
     {
         return dao.getEventDAO().addEvent(name, description, start, end, Date, location);
     }

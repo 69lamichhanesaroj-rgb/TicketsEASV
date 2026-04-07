@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.time.LocalTime;
+import java.sql.Time;
 import java.time.format.DateTimeFormatter;
 
 public class AddEventController {
@@ -40,13 +40,13 @@ public class AddEventController {
     @FXML
     private void onAddEvent() {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
             String name = nameField.getText();
             String moreInfo = moreInfoField.getText();
             String when = whenField.getText();
-            LocalTime starTime = LocalTime.parse(startTimeField.getText(), formatter);
-            LocalTime endTime = LocalTime.parse(endTimeField.getText(), formatter);
+            String starTime = startTimeField.getText();
+            String endTime = endTimeField.getText();
             String location = locationField.getText();
             String description = descriptionField.getText();
             String imagePath = imagePathField.getText();

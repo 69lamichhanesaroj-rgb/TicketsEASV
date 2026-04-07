@@ -1,16 +1,12 @@
 package dk.easv.ticketseasv.be;
 
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Event {
     private int id;
     private String name;
     private String moreInfo; // karaoke starts this time
-    private LocalDate date;
-    private LocalTime starTime;
-    private LocalTime endTime;
+    private String date;
+    private String starTime;
+    private String endTime;
     private String location;
     private String description; //About this event
     private String when;
@@ -19,7 +15,7 @@ public class Event {
 
 
     //Constructor
-    public Event(int id, String name, String moreInfo, LocalDate date, LocalTime starTime,LocalTime endTime,String location,String description) {
+    public Event(int id, String name, String moreInfo, String date, String starTime,String endTime,String location,String description) {
         this.id = id;
         this.name = name;
         this.moreInfo = moreInfo;
@@ -30,7 +26,7 @@ public class Event {
         this.description = description;
     }
 
-    public Event(int id, String name, String moreInfo, String when, LocalTime starTime,LocalTime endTime,String location,String description, String imagePath) {
+    public Event(int id, String name, String moreInfo, String when, String starTime,String endTime,String location,String description, String imagePath) {
         this.id = id;
         this.name = name;
         this.moreInfo = moreInfo;
@@ -72,27 +68,27 @@ public class Event {
         this.moreInfo = moreInfo;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalTime getStarTime() {
+    public String getStarTime() {
         return starTime;
     }
 
-    public void setStarTime(LocalTime starTime) {
+    public void setStarTime(String starTime) {
         this.starTime = starTime;
     }
 
-    public LocalTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

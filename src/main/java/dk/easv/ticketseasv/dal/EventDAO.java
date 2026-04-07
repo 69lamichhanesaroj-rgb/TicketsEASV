@@ -3,6 +3,8 @@ package dk.easv.ticketseasv.dal;
 import dk.easv.ticketseasv.be.Event;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventDAO
 {
@@ -47,5 +49,32 @@ public class EventDAO
         {
             System.err.println("Error editing event: " + e.getMessage());
         }
+    }
+
+    public List<Event> getAllEvents() {
+        List<Event> events = new ArrayList<>();
+
+        try (Connection con = conMan.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM Events");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Event event = new Event(
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("date")
+                );
+
+                // do we need more or less stuff displayed on the homepage?
+                // Feel free to change it if needed
+
+                events.add(event);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching events: " + e.getMessage());
+        }
+
+        return events;
     }
 }

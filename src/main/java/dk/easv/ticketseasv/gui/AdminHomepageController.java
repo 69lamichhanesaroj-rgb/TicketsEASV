@@ -2,6 +2,7 @@ package dk.easv.ticketseasv.gui;
 
 import dk.easv.ticketseasv.be.Event;
 import dk.easv.ticketseasv.be.User;
+import dk.easv.ticketseasv.dal.EventDAO;
 import dk.easv.ticketseasv.dal.UsersDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,7 +52,7 @@ public class AdminHomepageController {
 
     @FXML
     public void initialize() {
-        if (masterData.isEmpty()) {
+        /* if (masterData.isEmpty()) {
             masterData.addAll(
                     new Event("The Voice Karaoke", "Friday, February 30, 2026", null),
                     new Event("Tech Conference 2026", "Saturday, June 4, 2026", null),
@@ -61,6 +62,17 @@ public class AdminHomepageController {
                     new Event("Halloween Party (scary)", "Sunday, October 30, 2026", null)
             );
         }
+         */
+        if (masterData.isEmpty()) {
+            EventDAO eventDAO = new EventDAO();
+            try {
+                masterData.addAll(eventDAO.getAllEvents());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
         filteredData = new FilteredList<>(masterData, e -> true);
         eventList.setItems(filteredData);
         eventList.setCellFactory(list -> new EventCell("Admin"));

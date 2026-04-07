@@ -45,7 +45,7 @@ public class AddUserController {
                 alert.showAndWait();
                 return;
             }
-            passwordManager.AddUser(username, role, email, password);
+            passwordManager.AddUser(role, username, email, password);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

@@ -53,7 +53,7 @@
         <VBox fx:id="eventsPane" spacing="16" VBox.vgrow="ALWAYS">
             <HBox spacing="10">
                 <TextField fx:id="searchField" promptText="Search events..." HBox.hgrow="ALWAYS"/>
-                <Button text="Sort by username" onAction="#onSortClicked"/>
+                <Button text="Sort by name" onAction="#onSortClicked"/>
             </HBox>
             <ListView fx:id="eventList" VBox.vgrow="ALWAYS"/>
         </VBox>
@@ -62,7 +62,7 @@
         <VBox fx:id="usersPane" spacing="16" VBox.vgrow="ALWAYS" visible="false" managed="false">
             <HBox spacing="10">
                 <TextField fx:id="userSearchField" promptText="Search users..." HBox.hgrow="ALWAYS"/>
-                <Button text="Sort by username" onAction="#onSortClicked"/>
+                <Button text="Sort by name" onAction="#onSortClicked"/>
                 <Button text="New User" fx:id="newUserBtn" onAction="#onNewUserClicked"/>
             </HBox>
             <ListView fx:id="userList" VBox.vgrow="ALWAYS"/>

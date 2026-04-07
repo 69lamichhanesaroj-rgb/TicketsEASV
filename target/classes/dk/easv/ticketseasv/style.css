@@ -7,8 +7,9 @@
 
 .event-card:hover {
     -fx-background-color: #f5f7fa;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0.2, 0, 4);
-    -fx-cursor: hand;}
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0.2, 0, 4);
+    -fx-cursor: hand;
+    }
 
     .button {
         -fx-cursor: hand;

@@ -3,7 +3,6 @@ package dk.easv.ticketseasv.gui;
 import dk.easv.ticketseasv.be.User;
 import dk.easv.ticketseasv.bll.PasswordManager;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -35,7 +34,7 @@ public class LoginController {
         btnLogIn.setDisable(txtUsernameField.getText().isEmpty() || txtPasswordField.getText().isEmpty());
     }
 
-    public void btnSignIn(ActionEvent actionEvent) {
+    public void btnSignIn() {
         String login = txtUsernameField.getText();
         String password = txtPasswordField.getText();
 

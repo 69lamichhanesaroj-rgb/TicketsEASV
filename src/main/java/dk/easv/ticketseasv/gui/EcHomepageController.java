@@ -1,6 +1,7 @@
 package dk.easv.ticketseasv.gui;
 
 import dk.easv.ticketseasv.be.Event;
+import dk.easv.ticketseasv.dal.EventDAO;
 import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -29,15 +30,23 @@ public class EcHomepageController {
     public void initialize() {
 
 
+//        if (masterData.isEmpty()) {
+//            masterData.addAll(
+//                    new Event("The Voice Karaoke", "Friday, February 30, 2026", null),
+//                    new Event("Tech Conference 2026", "Saturday, June 4, 2026", null),
+//                    new Event("Sankt Hans/Bonfire", "Monday, June 23, 2026", null),
+//                    new Event("Summer Sausage Party", "Sunday, August 27, 2026", null),
+//                    new Event("Hackathon 2026", "Saturday, September 15, 2026", null),
+//                    new Event("Halloween Party", "Sunday, October 30, 2026", null)
+//            );
+//        }
         if (masterData.isEmpty()) {
-            masterData.addAll(
-                    new Event("The Voice Karaoke", "Friday, February 30, 2026", null),
-                    new Event("Tech Conference 2026", "Saturday, June 4, 2026", null),
-                    new Event("Sankt Hans/Bonfire", "Monday, June 23, 2026", null),
-                    new Event("Summer Sausage Party", "Sunday, August 27, 2026", null),
-                    new Event("Hackathon 2026", "Saturday, September 15, 2026", null),
-                    new Event("Halloween Party", "Sunday, October 30, 2026", null)
-            );
+            EventDAO eventDAO = new EventDAO();
+            try {
+                masterData.addAll(eventDAO.getAllEvents());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         filteredData = new FilteredList<>(masterData, p -> true);

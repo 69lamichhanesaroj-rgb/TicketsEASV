@@ -38,6 +38,19 @@ public class Event {
         this.imagePath = imagePath;
     }
 
+    public Event(String name, String moreInfo, String when, String starTime,String endTime,String location,String description, String imagePath) {
+        this.name = name;
+        this.moreInfo = moreInfo;
+        this.when = when;
+        this.starTime = starTime;
+        this.endTime = endTime;
+        this.location = location;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
+
+
+
     public Event (String name, String when, String imagePath){
         this.name = name;
         this.when = when;

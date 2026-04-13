@@ -13,9 +13,7 @@ public class EventLogic {
     public EventLogic()
     {}
 
-    public int createEvent(String name, String description, String start, String end, String Date, String location)
-    {
-        return dao.getEventDAO().addEvent(name, description, start, end, Date, location);
+    public int createEvent(Event event) { return dao.getEventDAO().addEvent(event);
     }
 
     public void editEvent(Event event)

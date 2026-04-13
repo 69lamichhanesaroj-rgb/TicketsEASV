@@ -64,6 +64,9 @@ public class EventCell extends ListCell<Event> {
                 stage.setScene(new Scene(root));
                 stage.show();
 
+                AddEventController controller = loader.getController();
+                controller.setEventToEdit(getItem());
+
                 System.out.println("Manage: " + getItem().getName());
 
             } catch (Exception ex) {

@@ -1,8 +1,15 @@
 package dk.easv.ticketseasv.gui;
 
 import dk.easv.ticketseasv.be.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class EventCell extends ListCell<Event> {
 
@@ -44,14 +51,67 @@ public class EventCell extends ListCell<Event> {
         });
 
         edit.setOnAction(e -> {
+
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/dk/easv/ticketseasv/add-event.fxml")
+                );
+
+                VBox root = loader.load();
+
+                Stage stage = new Stage();
+                stage.setTitle("Manage");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                System.out.println("Manage: " + getItem().getName());
+
+            } catch (Exception ex) {
+                ex.printStackTrace(); // IMPORTANT for debugging
+            }
+
+
             System.out.println("Edit: " + getItem().getName());
         });
 
         manage.setOnAction(e -> {
-            System.out.println("Manage: " + getItem().getName());
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/dk/easv/ticketseasv/manageCoordinator.fxml")
+                );
+
+                VBox root = loader.load();
+
+                Stage stage = new Stage();
+                stage.setTitle("Manage");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                System.out.println("Manage: " + getItem().getName());
+
+            } catch (Exception ex) {
+                ex.printStackTrace(); // IMPORTANT for debugging
+            }
         });
 
         delete.setOnAction(e -> {
+
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/dk/easv/ticketseasv/delete-event.fxml")
+                );
+
+                VBox root = loader.load();
+
+                Stage stage = new Stage();
+                stage.setTitle("Delete Event");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            } catch (Exception ex) {
+                ex.printStackTrace(); // IMPORTANT for debugging
+            }
+
             System.out.println("Delete: " + getItem().getName());
             getListView().getItems().remove(getItem());
         });

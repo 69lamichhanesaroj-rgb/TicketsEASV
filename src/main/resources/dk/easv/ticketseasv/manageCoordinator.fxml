@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="363.0" prefWidth="505.0" spacing="12" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.ticketseasv.gui.ManageCoordinatorController">
+   <padding>
+      <Insets bottom="15" left="15" right="15" top="15" />
+   </padding>
+   <children>
+      <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Assign Coordinator" />
+      <HBox prefHeight="33.0" prefWidth="311.0">
+         <children>
+            <Label text="Coordinator: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="coordinatornameTxt" prefHeight="29.0" prefWidth="209.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="searchCoordinator" mnemonicParsing="false" text="Search">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <ListView fx:id="coordinatorList" prefHeight="200.0" prefWidth="200.0" />
+      <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="339.0" spacing="15.0">
+         <children>
+            <Button onAction="#btnCancel" text="Cancel">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="RIGHT" onAction="#btnAddCoordinator" text="Add Coordinator">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

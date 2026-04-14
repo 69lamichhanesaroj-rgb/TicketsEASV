@@ -20,12 +20,12 @@
       </Text>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Cancel">
+            <Button fx:id="cancelBtn" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="30.0" prefWidth="67.0" text="Cancel">
                <HBox.margin>
                   <Insets right="20.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="63.0" text="Delete">
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="30.0" prefWidth="63.0" text="Delete">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>

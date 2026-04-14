@@ -28,8 +28,8 @@ public class LoginController {
     public void initialize() {
          txtUsernameField.textProperty().addListener((_, _, _) -> updateButton());
          txtPasswordField.textProperty().addListener((_, _, _) -> updateButton());
-        //txtUsernameField.insertText(0, "examplecoordinator@easv365.dk");
-        //txtPasswordField.insertText(0, "coordinator");
+        txtUsernameField.insertText(0, "examplecoordinator@easv365.dk");
+        txtPasswordField.insertText(0, "coordinator");
     }
 
     private void updateButton() {

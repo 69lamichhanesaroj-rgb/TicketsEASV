@@ -20,4 +20,6 @@ public class EventLogic {
     {
         dao.getEventDAO().editEvent(event);
     }
+
+    public void deleteEvent(Event event){dao.getEventDAO().deleteEvent(event)}
 }

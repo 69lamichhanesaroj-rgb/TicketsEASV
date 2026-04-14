@@ -77,4 +77,18 @@ public class EventDAO
 
         return events;
     }
+
+    public void deleteEvent(Event event)
+    {
+        try (Connection con = conMan.getConnection())
+        {
+            PreparedStatement stmt = con.prepareStatement("DELETE Events WHERE id = ?");
+            stmt.setInt(1, event.getId());
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error deleting event: " + e.getMessage());
+        }
+    }
 }

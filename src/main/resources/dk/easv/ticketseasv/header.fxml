@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER_LEFT">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <ImageView fitHeight="60" preserveRatio="true">
+        <image>
+            <Image url="@images/skolelogoigen.png"/>
+        </image>
+    </ImageView>
+
+    <Region HBox.hgrow="ALWAYS"/>
+
+    <HBox fx:id="userBox" alignment="CENTER" spacing="7" style="-fx-cursor: hand;">
+        <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+            <image>
+                <Image url="@images/userIcon.png"/>
+            </image>
+        </ImageView>
+
+        <Label fx:id="roleLbl"
+               text="Role"
+               style="-fx-font-size:15px; -fx-font-weight:500;"/>
+    </HBox>
+</HBox>

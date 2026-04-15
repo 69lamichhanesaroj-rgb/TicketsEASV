@@ -59,7 +59,7 @@
                    promptText="Search..."
                    HBox.hgrow="ALWAYS"/>
 
-        <Button text="Sort by username"
+        <Button text="Sort by event"
                 onAction="#onSortClicked"/>
 
         <Button fx:id="newEventBtn"
@@ -67,7 +67,17 @@
                 onAction="#onNewEventClicked"/>
     </HBox>
 
-    <ListView fx:id="eventList"
-              VBox.vgrow="ALWAYS"/>
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <TilePane fx:id="eventPane"
+                  hgap="15"
+                  vgap="15"
+                  prefColumns="3">
+
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+        </TilePane>
+    </ScrollPane>
 
 </VBox>

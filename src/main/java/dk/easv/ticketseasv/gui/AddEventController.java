@@ -40,7 +40,7 @@ public class AddEventController {
     private boolean isEditing = false;
     private Event eventToEdit = null;
 
-    private final static EventLogic eventLogic = new EventLogic();
+    final static EventLogic eventLogic = new EventLogic();
 
     private static int idCounter = 1000; // simple auto id generator rn. Change whenever possible ^^
 

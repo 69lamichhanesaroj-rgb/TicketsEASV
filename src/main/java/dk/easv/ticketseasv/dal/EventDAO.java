@@ -78,17 +78,38 @@ public class EventDAO
         return events;
     }
 
-    public void deleteEvent(Event event)
-    {
-        try (Connection con = conMan.getConnection())
-        {
-            PreparedStatement stmt = con.prepareStatement("DELETE Events WHERE id = ?");
-            stmt.setInt(1, event.getId());
-            stmt.executeUpdate();
+    public Event getEventById(int id) {
+        try (Connection con = conMan.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM Events WHERE id=?");
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return mapEvent(rs);
+            }
+
+        }  catch (SQLException e) {
+            System.err.println("Error fetching event by id: " + e.getMessage());
         }
-        catch (SQLException e)
-        {
-            System.err.println("Error deleting event: " + e.getMessage());
-        }
+
+        return null;
+    }
+
+    private Event mapEvent(ResultSet rs) throws SQLException {
+
+        Event event = new Event(
+                rs.getString("name"),
+                rs.getString("description"),
+                rs.getString("date")
+        );
+
+        event.setId(rs.getInt("id"));
+        event.setLocation(rs.getString("location"));
+        event.setStarTime(rs.getString("start_time"));
+        event.setEndTime(rs.getString("end_time"));
+
+        return event;
     }
 }

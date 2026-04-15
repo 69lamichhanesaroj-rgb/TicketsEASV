@@ -5,6 +5,7 @@ import dk.easv.ticketseasv.dal.DAOManager;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 public class EventLogic {
 
@@ -20,6 +21,11 @@ public class EventLogic {
     {
         dao.getEventDAO().editEvent(event);
     }
+    public Event getEventById(int id) {
+        return dao.getEventDAO().getEventById(id);
+    }
 
-    public void deleteEvent(Event event){dao.getEventDAO().deleteEvent(event)}
+    public List<Event> getAllEvents() {
+        return dao.getEventDAO().getAllEvents();
+    }
 }

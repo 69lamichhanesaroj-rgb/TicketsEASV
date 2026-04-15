@@ -76,16 +76,14 @@ public class AdminHomepageController {
         filteredData = new FilteredList<>(masterData, e -> true);
         eventList.setItems(filteredData);
         eventList.setCellFactory(list -> new EventCell());
-        
-        /* if (userMasterData.isEmpty()) {
+
+        if (userMasterData.isEmpty()) {
             userMasterData.addAll(
                     new User("Bob", "Event Coordinator"),
                     new User("Bobby", "Event Coordinator"),
                     new User("Bobson", "Admin")
             );
         }
-
-         */
 
 
         if (userMasterData.isEmpty()) {

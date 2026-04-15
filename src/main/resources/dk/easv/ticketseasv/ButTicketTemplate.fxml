@@ -15,210 +15,249 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dk.easv.ticketseasv.gui.TicketController">
 
     <content>
         <VBox spacing="32">
+
             <padding>
-                <Insets bottom="10" left="32" right="32" top="32" />
+                <Insets top="32" right="32" bottom="32" left="32"/>
             </padding>
 
             <!-- ================= TOP BAR ================= -->
-            <HBox alignment="CENTER_LEFT" spacing="0">
-                <!-- Logo Left -->
+            <HBox alignment="CENTER_LEFT">
+
                 <ImageView fitHeight="100" preserveRatio="true" smooth="true">
                     <image>
-                        <Image url="@images/skolelogoigen.png" />
+                        <Image url="@images/skolelogoigen.png"/>
                     </image>
                 </ImageView>
 
-                <!-- Spacer -->
-                <Region HBox.hgrow="ALWAYS" />
+                <Region HBox.hgrow="ALWAYS"/>
 
-                <!-- Profile Right -->
                 <HBox alignment="CENTER" spacing="7">
                     <ImageView fitHeight="40" fitWidth="40" preserveRatio="true" smooth="true">
                         <image>
-                            <Image url="@images/userIcon.png" />
+                            <Image url="@images/userIcon.png"/>
                         </image>
                     </ImageView>
-                    <Label style="-fx-font-size: 16px; -fx-font-weight: 500;" text="Event coordinator" />
+
+                    <Label fx:id="roleLbl"
+                           text="Event coordinator"
+                           style="-fx-font-size: 16px; -fx-font-weight: 500;"/>
                 </HBox>
+
             </HBox>
 
             <!-- ================= HEADER ================= -->
             <VBox alignment="CENTER" spacing="12">
-                <Label style="-fx-font-size: 40px; -fx-font-weight: 500;" text="(Event Name)" />
 
-                <Label style="-fx-font-size: 20px; -fx-text-fill: #717182;" text="(Small event description) &lt;-- Not sure about that" />
+                <Label fx:id="eventNameLbl"
+                       style="-fx-font-size: 40px; -fx-font-weight: 500;"/>
+
+                <Label fx:id="eventDescriptionLbl"
+                       style="-fx-font-size: 20px; -fx-text-fill: #717182;"
+                       wrapText="true"/>
+
             </VBox>
 
             <!-- ================= MAIN CONTENT ================= -->
             <HBox spacing="32">
 
-                <!-- ========== LEFT SIDE (Event Info) ========== -->
+                <!-- LEFT SIDE -->
                 <VBox prefWidth="560" spacing="24">
 
-                    <!-- Event Card -->
-                    <VBox spacing="24" style="-fx-background-color: white;                                  -fx-background-radius: 14;                                  -fx-padding: 24;                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0.2, 0, 8);">
+                    <!-- EVENT CARD -->
+                    <VBox spacing="24"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-padding: 24;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0.2, 0, 8);">
 
-                        <!-- Image -->
+                        <!-- IMAGE -->
                         <StackPane prefHeight="225.0" prefWidth="512.0">
-                            <ImageView fitHeight="250.0" fitWidth="462.0" preserveRatio="true">
-                                <image>
-                                    <Image url="@images/Image_Preview.png" />
-                                </image>
-                            </ImageView>
+                            <ImageView fx:id="eventImageView"
+                                       fitHeight="250.0"
+                                       fitWidth="462.0"
+                                       preserveRatio="true"/>
                         </StackPane>
 
-                        <!-- Event Details -->
+                        <!-- EVENT DETAILS -->
                         <VBox spacing="16">
-                            <Label style="-fx-font-size: 20px; -fx-font-weight: 500;" text="Event Details" />
+
+                            <Label style="-fx-font-size: 20px; -fx-font-weight: 500;"
+                                   text="Event Details"/>
 
                             <VBox spacing="12">
-                                <Label style="-fx-font-size: 16px;" text="(Date)" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Make sure to reserve the date in your calendar ;D &lt;-- Not sure about that" />
 
-                                <Label style="-fx-font-size: 16px;" text="(Time/Duration)" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Start time)" />
+                                <Label text="Date" style="-fx-font-size: 16px;"/>
+                                <Label fx:id="eventDateLbl"
+                                       style="-fx-font-size: 14px; -fx-text-fill: #717182;"/>
 
-                                <Label style="-fx-font-size: 16px;" text="(Location)" />
-                                <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Extra location Details)" />
+                                <Label text="Location" style="-fx-font-size: 16px;"/>
+                                <Label fx:id="eventLocationLbl"
+                                       style="-fx-font-size: 14px; -fx-text-fill: #717182;"/>
+
                             </VBox>
                         </VBox>
 
-                        <!-- About -->
+                        <!-- ABOUT -->
                         <VBox spacing="8">
-                            <Separator />
-                            <Label style="-fx-font-size: 16px; -fx-font-weight: 500;" text="About This Event" />
+                            <Separator/>
 
-                            <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="(Description)" wrapText="true" />
+                            <Label text="About This Event"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 500;"/>
+
+                            <Label fx:id="eventAboutLbl"
+                                   wrapText="true"
+                                   style="-fx-font-size: 14px; -fx-text-fill: #717182;"/>
                         </VBox>
+
                     </VBox>
 
-                    <!-- Ticket Price Card -->
-                    <VBox spacing="8" style="-fx-background-color: white;                                  -fx-background-radius: 14;                                  -fx-padding: 24;                                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0.2, 0, 8);">
+                    <!-- PRICE CARD -->
+                    <VBox spacing="8"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-padding: 24;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0.2, 0, 8);">
 
-                        <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Ticket Price" />
+                        <Label text="Ticket Price"
+                               style="-fx-font-size: 14px; -fx-text-fill: #717182;"/>
 
                         <HBox alignment="BASELINE_LEFT" spacing="4">
-                            <Label style="-fx-font-size: 48px; -fx-font-weight: bold;" text="(Ticket Price)" />
-                            <Label style="-fx-font-size: 14px;" text="dkk" />
+
+                            <Label fx:id="ticketPriceLbl"
+                                   style="-fx-font-size: 48px; -fx-font-weight: bold;"/>
+
+                            <Label text="dkk"
+                                   style="-fx-font-size: 14px;"/>
                         </HBox>
+
                     </VBox>
 
                 </VBox>
 
-                <!-- ========== RIGHT SIDE (Purchase Form) ========== -->
-                <VBox prefWidth="560" spacing="24" style="-fx-background-color: white;                              -fx-background-radius: 14;                              -fx-padding: 24;">
+                <!-- RIGHT SIDE -->
+                <VBox prefWidth="560"
+                      spacing="24"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 14;
+                             -fx-padding: 24;">
 
-                    <!-- Form Header -->
+                    <!-- HEADER -->
                     <VBox spacing="8">
-                        <Label style="-fx-font-size: 24px; -fx-font-weight: 500;" text="Purchase Tickets" />
 
-                        <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="Fill in the student’s details to complete the purchase" />
+                        <Label text="Purchase Tickets"
+                               style="-fx-font-size: 24px; -fx-font-weight: 500;"/>
+
+                        <Label text="Fill in details to complete purchase"
+                               style="-fx-font-size: 16px; -fx-text-fill: #717182;"/>
+
                     </VBox>
 
-                    <!-- Customer Information -->
+                    <!-- FORM -->
                     <VBox spacing="16">
 
-                        <Label style="-fx-font-size: 18px; -fx-font-weight: 500;" text="Customer Information" />
+                        <Label text="Customer Information"
+                               style="-fx-font-size: 18px; -fx-font-weight: 500;"/>
 
-                        <!-- Full Name -->
                         <VBox spacing="8">
-                            <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Full Name *" />
-                            <TextField prefHeight="44" promptText="Whitney Houston" style="-fx-background-color: #f3f3f5;                                               -fx-background-radius: 8;" />
+                            <Label text="Full Name *"/>
+                            <TextField fx:id="nameField"
+                                       prefHeight="44"
+                                       promptText="John Doe"
+                                       style="-fx-background-color: #f3f3f5; -fx-background-radius: 8;"/>
                         </VBox>
 
-                        <!-- Email -->
                         <VBox spacing="8">
-                            <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Email Address *" />
-                            <TextField prefHeight="44" promptText="email@example.com" style="-fx-background-color: #f3f3f5;                                               -fx-background-radius: 8;" />
+                            <Label text="Email *"/>
+                            <TextField fx:id="emailField"
+                                       prefHeight="44"
+                                       promptText="email@example.com"
+                                       style="-fx-background-color: #f3f3f5; -fx-background-radius: 8;"/>
                         </VBox>
 
-                        <!-- Number of Tickets -->
+                        <!-- TICKET COUNT -->
                         <VBox spacing="8">
-                            <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Number of Tickets" />
-                            <HBox alignment="CENTER_LEFT" spacing="12.0">
-                                <Button prefHeight="44" prefWidth="44" text="-" />
-                                <Label style="-fx-font-size: 16px; -fx-font-weight: 500;" text="1" />
-                                <Button prefHeight="44" prefWidth="44" text="+" />
-                                <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="x" />
-                        <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="(Ticket Price)" />
-                        <Label style="-fx-font-size: 16px; -fx-text-fill: #717182;" text="dkk each" />
+                            <Label text="Number of Tickets"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+
+                                <Button text="-" fx:id="minusBtn"
+                                        prefWidth="44" prefHeight="44"/>
+                                <Label fx:id="ticketCountLbl"/>
+                                <Button text="+" fx:id="plusBtn"
+                                        prefWidth="44" prefHeight="44"/>
+
                             </HBox>
                         </VBox>
 
-                        <!-- Price Per Ticket Info -->
-                        <HBox alignment="CENTER_LEFT" spacing="12" />
-
-                        <!-- ================= DELIVERY METHOD ================= -->
+                        <!-- DELIVERY -->
                         <VBox spacing="12">
 
-                            <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Delivery Method" />
-
-                            <!-- Email Delivery Option -->
-                            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 16;                  -fx-border-color: rgba(0,0,0,0.1);                  -fx-border-radius: 10;                  -fx-background-radius: 10;">
-
-                                <RadioButton selected="true">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="deliveryGroup" />
-                                    </toggleGroup></RadioButton>
-
-                                <VBox spacing="4">
-                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Email Delivery" />
-
-                                    <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Receive tickets instantly via email" />
-                                </VBox>
-                            </HBox>
-
-                            <!-- Printed Tickets Option -->
-                            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 16;                  -fx-border-color: rgba(0,0,0,0.1);                  -fx-border-radius: 10;                  -fx-background-radius: 10;">
-
-                                <RadioButton toggleGroup="$deliveryGroup" />
-
-                                <VBox spacing="4">
-                                    <Label style="-fx-font-size: 14px; -fx-font-weight: 500;" text="Printed Tickets" />
-
-                                    <Label style="-fx-font-size: 14px; -fx-text-fill: #717182;" text="Printed and hand-delivered as fast as the printer can manage it" wrapText="true" />
-                                </VBox>
-                            </HBox>
+                            <Label text="Delivery Method"/>
 
                             <fx:define>
-                                <ToggleGroup fx:id="deliveryGroup" />
+                                <ToggleGroup fx:id="deliveryGroup"/>
                             </fx:define>
 
-                        </VBox>
+                            <HBox spacing="12"
+                                  style="-fx-padding: 16;
+                                         -fx-border-color: rgba(0,0,0,0.1);
+                                         -fx-border-radius: 10;
+                                         -fx-background-radius: 10;">
 
-                        <!-- ================= ORDER SUMMARY ================= -->
-                        <VBox spacing="16" style="-fx-background-color: #faf5ff;              -fx-background-radius: 10;              -fx-padding: 20;">
+                                <RadioButton text="Email Delivery"
+                                             toggleGroup="$deliveryGroup"
+                                             selected="true"/>
 
-                            <!-- Tickets Row -->
-                            <HBox alignment="CENTER_LEFT">
-                                <Label style="-fx-font-size: 16px;" text="Tickets (1)" HBox.hgrow="ALWAYS" />
-
-                                <HBox alignment="BASELINE_RIGHT" spacing="4">
-                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="(Ticket Price)" />
-                                    <Label style="-fx-font-size: 14px;" text="dkk" />
-                                </HBox>
                             </HBox>
 
-                            <Separator />
+                            <HBox spacing="12"
+                                  style="-fx-padding: 16;
+                                         -fx-border-color: rgba(0,0,0,0.1);
+                                         -fx-border-radius: 10;
+                                         -fx-background-radius: 10;">
 
-                            <!-- Total Row -->
-                            <HBox alignment="CENTER_LEFT">
-                                <Label style="-fx-font-size: 18px;" text="Total" HBox.hgrow="ALWAYS" />
+                                <RadioButton text="Printed Tickets"
+                                             toggleGroup="$deliveryGroup"/>
 
-                                <HBox alignment="BASELINE_RIGHT" spacing="4">
-                                    <Label style="-fx-font-size: 24px; -fx-font-weight: 600;" text="(Total Price)" />
-                                    <Label style="-fx-font-size: 14px;" text="dkk" />
-                                </HBox>
                             </HBox>
 
                         </VBox>
 
-                        <!-- ================= SUBMIT BUTTON ================= -->
-                        <Button maxWidth="Infinity" prefHeight="40" style="-fx-background-color: #030213;                -fx-text-fill: white;                -fx-font-weight: 500;                -fx-background-radius: 8;" text="Got everything?" />
+                        <!-- SUMMARY -->
+                        <VBox spacing="16"
+                              style="-fx-background-color: #faf5ff;
+                                     -fx-background-radius: 10;
+                                     -fx-padding: 20;">
+
+                            <HBox>
+                                <Label text="Tickets " HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="subtotalLbl" text="0 dkk"/>
+                            </HBox>
+
+                            <Separator/>
+
+                            <HBox>
+                                <Label text="Total" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="totalLbl"
+                                       style="-fx-font-size: 18px; -fx-font-weight: 600;"
+                                       text="0 dkk"/>
+                            </HBox>
+
+                        </VBox>
+
+                        <Button text="Buy Ticket"
+                                maxWidth="Infinity"
+                                prefHeight="44"
+                                style="-fx-background-color: #030213;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 8;"/>
 
                     </VBox>
 

@@ -45,24 +45,21 @@ public class AddEventController {
     @FXML
     private void onAddEvent() {
         String name = nameField.getText().trim();
-        String moreInfo = moreInfoField.getText().trim();
-        String when = whenField.getText().trim();
+        String date = whenField.getText().trim();
         String startTime = startTimeField.getText().trim();
         String endTime = endTimeField.getText().trim();
         String location = locationField.getText().trim();
         String description = descriptionField.getText().trim();
-        String imagePath = imagePathField.getText().trim();
 
-        if (name.isEmpty() || when.isEmpty() || location.isEmpty()) {
+        if (name.isEmpty() || date.isEmpty() || location.isEmpty()) {
             errorLabel.setText("Name, date and location are required.");
             return;
         }
 
         if (isEditing) {
             newEvent = new Event(
-                    eventToEdit.getId(),  // preserve original ID
-                    name, description, when, startTime, endTime, date,
-                    location, id
+                    name, description, startTime, endTime, date,
+                    location, eventToEdit.getId()
             );
             boolean success = eventLogic.editEvent(newEvent);
             if (!success) {
@@ -71,8 +68,8 @@ public class AddEventController {
             }
         } else {
             newEvent = new Event(
-                    name, moreInfo, when, startTime, endTime,
-                    location, description, imagePath
+                    name, description, startTime, endTime, date,
+                    location, newEvent.getId()
             );
             int generatedId = eventLogic.createEvent(newEvent);
             if (generatedId == 0) {
@@ -91,12 +88,10 @@ public class AddEventController {
         titleLabel.setText("Edit Event");
         submitButton.setText("Save Changes");
         nameField.setText(event.getName());
-        moreInfoField.setText(event.getMoreInfo());
         whenField.setText(event.getDate());
         startTimeField.setText(event.getStarTime());
         endTimeField.setText(event.getEndTime());
         locationField.setText(event.getLocation());
         descriptionField.setText(event.getDescription());
-        imagePathField.setText(event.getImagePath());
     }
 }

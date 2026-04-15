@@ -49,13 +49,9 @@ public class TicketController {
 
     public void setEvent(Event event) {
         eventNameLbl.setText(event.getName());
-        eventDateLbl.setText(event.getWhen());
+        eventDateLbl.setText(event.getDate());
         eventDescriptionLbl.setText(event.getDescription());
         ticketPriceLbl.setText("100"); //also replace with event.getPrice()
-
-        if (event.getImagePath() != null) {
-            eventImageView.setImage(new Image(event.getImagePath()));
-        }
     }
 
     private void updatePrice() {

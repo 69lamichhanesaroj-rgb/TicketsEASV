@@ -140,7 +140,7 @@ public class EventCell extends ListCell<Event> {
             setGraphic(null);
         } else {
             nameLbl.setText(event.getName());
-            dateLbl.setText(event.getWhen());
+            dateLbl.setText(event.getDate());
             setGraphic(root);
         }
     }

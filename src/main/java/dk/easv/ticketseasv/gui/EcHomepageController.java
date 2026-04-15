@@ -36,14 +36,14 @@ public class EcHomepageController {
     public void initialize() {
 
 
-        if (masterData.isEmpty()) {
-            masterData.addAll(
-                    new Event("The Voice Karaoke", "Friday, February 30, 2026", null),             new Event("Tech Conference 2026", "Saturday, June 4, 2026", null),
-                    new Event("Sankt Hans/Bonfire", "Monday, June 23, 2026", null),             new Event("Summer Sausage Party", "Sunday, August 27, 2026", null),
-                    new Event("Hackathon 2026", "Saturday, September 15, 2026", null),
-                    new Event("Halloween Party", "Sunday, October 30, 2026", null)
-            );
-        }
+//        if (masterData.isEmpty()) {
+//            masterData.addAll(
+//                    new Event("The Voice Karaoke", "Friday, February 30, 2026", null),             new Event("Tech Conference 2026", "Saturday, June 4, 2026", null),
+//                    new Event("Sankt Hans/Bonfire", "Monday, June 23, 2026", null),             new Event("Summer Sausage Party", "Sunday, August 27, 2026", null),
+//                    new Event("Hackathon 2026", "Saturday, September 15, 2026", null),
+//                    new Event("Halloween Party", "Sunday, October 30, 2026", null)
+//            );
+//        }
         if (masterData.isEmpty()) {
             EventDAO eventDAO = new EventDAO();
             try {
@@ -190,7 +190,7 @@ public class EcHomepageController {
         Label title = new Label(event.getName());
         title.setStyle("-fx-font-size:16px; -fx-font-weight:bold;");
 
-        Label date = new Label(event.getWhen());
+        Label date = new Label(event.getDate());
         date.setStyle("-fx-text-fill: gray;");
 
         Button menuBtn = new Button("⋮");

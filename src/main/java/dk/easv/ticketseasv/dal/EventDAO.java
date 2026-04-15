@@ -103,7 +103,7 @@ public class EventDAO
                         rs.getString("end_time"),
                         rs.getString("date"),
                         rs.getString("location"),
-                        rs.getInt("id")
+                        rs.getInt("id"));
                 events.add(event);
             }
 

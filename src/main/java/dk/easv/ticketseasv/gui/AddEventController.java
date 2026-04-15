@@ -8,41 +8,26 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.Time;
-import java.time.format.DateTimeFormatter;
-
 public class AddEventController {
 
-    @FXML
-    private TextField nameField;
-    @FXML
-    private TextField moreInfoField;
-    @FXML
-    private TextField startTimeField;
-    @FXML
-    private TextField endTimeField;
-    @FXML
-    private TextField locationField;
-    @FXML
-    private TextField descriptionField;
-    @FXML
-    private TextField whenField;
-    @FXML
-    private TextField imagePathField;
-    @FXML
-    private Label titleLabel;
-    @FXML
-    private Button submitButton;
+    @FXML private TextField nameField;
+    @FXML private TextField moreInfoField;
+    @FXML private TextField startTimeField;
+    @FXML private TextField endTimeField;
+    @FXML private TextField locationField;
+    @FXML private TextField descriptionField;
+    @FXML private TextField whenField;
+    @FXML private TextField imagePathField;
+    @FXML private Label titleLabel;
+    @FXML private Label errorLabel;
+    @FXML private Button submitButton;
 
     private Stage dialogStage;
     private Event newEvent;
-
     private boolean isEditing = false;
     private Event eventToEdit = null;
 
     final static EventLogic eventLogic = new EventLogic();
-
-    private static int idCounter = 1000; // simple auto id generator rn. Change whenever possible ^^
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -59,55 +44,59 @@ public class AddEventController {
 
     @FXML
     private void onAddEvent() {
-        try {
-            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String name = nameField.getText().trim();
+        String moreInfo = moreInfoField.getText().trim();
+        String when = whenField.getText().trim();
+        String startTime = startTimeField.getText().trim();
+        String endTime = endTimeField.getText().trim();
+        String location = locationField.getText().trim();
+        String description = descriptionField.getText().trim();
+        String imagePath = imagePathField.getText().trim();
 
-            String name = nameField.getText();
-            String moreInfo = moreInfoField.getText();
-            String when = whenField.getText();
-            String starTime = startTimeField.getText();
-            String endTime = endTimeField.getText();
-            String location = locationField.getText();
-            String description = descriptionField.getText();
-            String imagePath = imagePathField.getText();
-
-            newEvent = new Event(
-                    idCounter++,
-                    name,
-                    moreInfo,
-                    when,
-                    starTime,
-                    endTime,
-                    location,
-                    description,
-                    imagePath
-            );
-            if (isEditing) {
-                eventLogic.editEvent(newEvent);
-            } else {
-                eventLogic.createEvent(newEvent);
-            }
-
-            dialogStage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (name.isEmpty() || when.isEmpty() || location.isEmpty()) {
+            errorLabel.setText("Name, date and location are required.");
+            return;
         }
+
+        if (isEditing) {
+            newEvent = new Event(
+                    eventToEdit.getId(),  // preserve original ID
+                    name, description, when, startTime, endTime, date,
+                    location, id
+            );
+            boolean success = eventLogic.editEvent(newEvent);
+            if (!success) {
+                errorLabel.setText("Failed to save changes. Please try again.");
+                return;
+            }
+        } else {
+            newEvent = new Event(
+                    name, moreInfo, when, startTime, endTime,
+                    location, description, imagePath
+            );
+            int generatedId = eventLogic.createEvent(newEvent);
+            if (generatedId == 0) {
+                errorLabel.setText("Failed to create event. Please try again.");
+                return;
+            }
+            newEvent.setId(generatedId);
+        }
+
+        dialogStage.close();
     }
 
     public void setEventToEdit(Event event) {
         this.eventToEdit = event;
         isEditing = true;
         titleLabel.setText("Edit Event");
-        submitButton.setText("Save Event");
-        nameField.setText(eventToEdit.getName());
-        moreInfoField.setText(eventToEdit.getMoreInfo());
-        whenField.setText(eventToEdit.getWhen());
-        startTimeField.setText(eventToEdit.getStarTime());
-        endTimeField.setText(eventToEdit.getEndTime());
-        locationField.setText(eventToEdit.getLocation());
-        descriptionField.setText(eventToEdit.getDescription());
-        imagePathField.setText(eventToEdit.getImagePath());
-
+        submitButton.setText("Save Changes");
+        nameField.setText(event.getName());
+        moreInfoField.setText(event.getMoreInfo());
+        whenField.setText(event.getDate());
+        startTimeField.setText(event.getStarTime());
+        endTimeField.setText(event.getEndTime());
+        locationField.setText(event.getLocation());
+        descriptionField.setText(event.getDescription());
+        imagePathField.setText(event.getImagePath());
     }
 }

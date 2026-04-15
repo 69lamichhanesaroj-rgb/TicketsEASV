@@ -18,9 +18,9 @@ public class DeleteEventController {
         }
 
         @FXML
-        void deleteOnAction(ActionEvent event) {
+        void deleteOnAction(ActionEvent event)
+        {
 
         }
-
     }
 
